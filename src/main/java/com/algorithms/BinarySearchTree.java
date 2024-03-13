@@ -94,13 +94,23 @@ public class BinarySearchTree {
 	public static void main(String[] args)
 	{
 
-		Node node1 = new Node(9);
-		Node node2 = new Node(4);
-		Node node3 = new Node(6);
-		Node node4 = new Node(20);
-		Node node5 = new Node(170);
-		Node node6 = new Node(15);
-		Node node7 = new Node(1);
+		// Node node1 = new Node(9);
+		// Node node4 = new Node(20);
+		// Node node6 = new Node(15);
+		// Node node2 = new Node(4);
+		// Node node3 = new Node(6);
+		// Node node5 = new Node(170);
+		//
+		// Node node7 = new Node(1);
+
+		Node node1 = new Node(0);
+		Node node2 = new Node(1);
+		Node node3 = new Node(2);
+		Node node4 = new Node(3);
+		Node node5 = new Node(4);
+		Node node6 = new Node(5);
+
+		// Node node7 = new Node(1);
 
 		BinarySearchTree binarySearchTree = new BinarySearchTree();
 		binarySearchTree.insert(node1);
@@ -109,10 +119,12 @@ public class BinarySearchTree {
 		binarySearchTree.insert(node4);
 		binarySearchTree.insert(node5);
 		binarySearchTree.insert(node6);
-		binarySearchTree.insert(node7);
+		// binarySearchTree.insert(node7);
 
 		System.out.println(binarySearchTree.getBFS());
 
 		System.out.println(binarySearchTree.lookup(2));
+
+		System.out.println(binarySearchTree.root.val);
 	}
 }
