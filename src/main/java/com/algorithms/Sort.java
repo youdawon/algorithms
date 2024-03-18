@@ -68,9 +68,6 @@ public class Sort {
 		int[] arr = {4, 7, 18, 55, 75, 22, 1};
 
 		Sort sort = new Sort();
-
-		Arrays.sort();
-
 		// System.out.println(Arrays.toString(sort.bubbleSort(arr)));
 
 		// System.out.println(Arrays.toString(sort.selectionSort(arr)));
