@@ -54,35 +54,37 @@ import java.util.List;
 public class Leetcode271 {
 
 	public static String encode(List<String> list){
-
 		StringBuilder sb = new StringBuilder();
-		for(String str: list){
-			sb.append(str.length() + "#").append(str);
+		for(String str : list){
+			sb.append(str.length() + "#" + str);
 		}
 
 		return sb.toString();
 	}
 
 	public static String[] decode(String s){
+
 		List<String> result = new ArrayList<>();
 
-		int i=0;
-		while (i < s.length()) {
-			int j=i;
+		int i = 0;
+		while(i < s.length()){
+			int j = i;
 			while(s.charAt(j) != '#'){
 				j++;
 			}
-			int size = Integer.parseInt(s.substring(j-1, j));
-			result.add(s.substring(j+1, j+size+1));
+			int size = Integer.parseInt(s.substring(i, j));
+			result.add(s.substring(j + 1, j + 1 + size));
 			i = j + size + 1;
 		}
+
+
 		return result.toArray(new String[result.size()]);
-	}
+ 	}
 
 	public static void main(String[] args){
 
 		List<String> list = new ArrayList<>();
-		list.add("leet");
+		list.add("testtesttesttest");
 		list.add("code");
 		list.add("love");
 		list.add("you");
@@ -90,7 +92,7 @@ public class Leetcode271 {
 		System.out.println(encode(list));
 		String[] result = decode(encode(list));
 
-		for(String str : result){
+		for(String str : result) {
 			System.out.println(str);
 		}
 	}

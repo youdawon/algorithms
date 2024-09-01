@@ -28,6 +28,8 @@ You can assume that no duplicate edges will appear in edges. Since all edges are
 
 package com.algorithms.leetcode;
 
+import java.sql.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -36,17 +38,18 @@ public class leetcode323{
 
 		int count = 0;
 
-		//인접 리스트 생성
 		List<List<Integer>> graph = new ArrayList<>();
 		for(int i=0; i<n; i++){
-			graph.add(new ArrayList<>());
-		}
-		for(int[] edge : edges){
-			graph.get(edge[0]).add(edge[1]);
-			graph.get(edge[1]).add(edge[0]);
+			graph.add(new ArrayList<Integer>());
 		}
 
-		boolean visited[] = new boolean[n];
+		for(int i=0; i<edges.length; i++){
+			graph.get(edges[i][0]).add(edges[i][1]);
+			graph.get(edges[i][1]).add(edges[i][0]);
+		}
+
+		boolean[] visited = new boolean[n];
+		Arrays.fill(visited, false);
 
 		for(int i=0; i<n; i++){
 			if(!visited[i]){
@@ -59,23 +62,24 @@ public class leetcode323{
 		return count;
 	}
 
-	public static void dfs(List<List<Integer>> graph, boolean[] visited, int num){
+	private static void dfs(List<List<Integer>> graph, boolean[] visited, int currentNode){
 
-		visited[num] = true;
+		if(visited[currentNode]){
+			return;
+		}
 
-		for(int neighbour : graph.get(num)){
-			if(visited[neighbour]){
-				continue;
-			}
-			dfs(graph, visited, neighbour);
+		visited[currentNode] = true;
+
+		for(int neighbor : graph.get(currentNode)){
+			dfs(graph, visited, neighbor);
 		}
 	}
 
 	public static void main(String[] args){
 
 		int n = 5;
-		// int[][] edges = {{0, 1}, {1, 2}, {3, 4}};
-		int[][] edges = {{0, 1}, {1, 2},{2, 3}, {3, 4}};
+		int[][] edges = {{0, 1}, {1, 2}, {3, 4}};
+		// int[][] edges = {{0, 1}, {1, 2},{2, 3}, {3, 4}};
 		System.out.println(getConnectedComponents(edges, n));
 	}
 }
